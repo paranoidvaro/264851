@@ -51,37 +51,38 @@ Additionally, we conducted experiments to demonstrate the impact of feature sele
 After selecting and fitting the best model for each algorithm, we evaluated the performance on the test set.
 
 The performance of the models before and after feature selection is summarized in the following table:
+
 |                     Model                     | Mean Squared Error | R2 Score | Mean Absolute Error |
 |:---------------------------------------------:|--------------------|----------|---------------------|
-| Neural Network Regression (before)            | 7.09               | -0.15    | 1.12                |
-| Neural Network Regression (after PCA)         | 6.83               | -0.11    | 1.1                 |
-| Neural Network Regression (after correlation) | 7.362468           | -0.19    | 1.149001            |
-| XGBoost Regression (before)                   | 5.75               | 0.07     | 1.29                |
-| XGBoost Regression (after PCA)                | 6.1                | 0.01     | 1.37                |
-| XGBoost Regression (after correlation)        | 5.72484            | 0.072464 | 1.290114            |
-| RANSAC Regression (before)                    | 7.42               | -0.2     | 1.17                |
-| RANSAC Regression (after PCA)                 | 7.1                | -0.15    | 1.12                |
-| RANSAC Regression (after correlation)         | 7.32               | -0.19    | 1.16                |
+| Neural Network Regression (before)            | 1.01               | -0.02     | 0.45               |
+| Neural Network Regression (after PCA)         | 1.09               |  -0.1     | 0.44               |
+| Neural Network Regression (after p-values)    | 0.98               |  0.0      | 0.445              |
+| XGBoost Regression (before)                   | 0.92               | 0.72      | 0.51               |
+| XGBoost Regression (after PCA)                | 0.98               | 0.01      | 0.55               |
+| XGBoost Regression (after p-values)           | 0.90               | 0.0822    | 0.50               |
+| RANSAC Regression (before)                    | 1.07               | -0.08     | 0.43               |
+| RANSAC Regression (after PCA)                 | 1.08               | -0.09     | 0.44               |
+| RANSAC Regression (after p-values)            | 1.07               | -0.08     | 0.43               |
 
 The scores for each model are as follows:
 
 Neural Network Regression:
 
-o Mean Squared Error: 7.09
-o R2 Score: --0.15
-o Mean Absolute Error: 1.12 
+o Mean Squared Error: 1.01
+o R2 Score: -0.02
+o Mean Absolute Error: 0.45 
 
 XGBoost Regression:
 
-o Mean Squared Error: 5.75
-o R2 Score: 0.07
-o Mean Absolute Error: 1.29
+o Mean Squared Error: 0.98
+o R2 Score: 0.072
+o Mean Absolute Error: 0.51
 
 RANSAC Regression:
 
-o Mean Squared Error: 7.42
-o R2 Score: -0.2
-o Mean Absolute Error: 1.17
+o Mean Squared Error: 1.07
+o R2 Score: -0.08
+o Mean Absolute Error: 0.43
 
 As we can see, (MSE) and (MAE) are low but in NN and RANSAC Regression the model is not capable of explaining any of the variance in the data. Regarding XGBoost the model is fitting the data, the measure is low but it can still be considered a starting point right now is the only model capable of outperforming a model that always predict the mean of the data (benchmark).
 
@@ -102,21 +103,21 @@ After using PCA, we obtained the following results:
 
 *Neural Network Regression*:
 
-o Mean Squared Error: 6.83 
-o R2 Score: -0.11
-o Mean Absolute Error: 1.1
+o Mean Squared Error: 1.09 
+o R2 Score: -0.1
+o Mean Absolute Error: 0.44
 
 *XGBoost Regression*:
 
-o Mean Squared Error: 6.1
+o Mean Squared Error: 0.98
 o R2 Score: 0.01
-o Mean Absolute Error: 1.37
+o Mean Absolute Error: 0.55
 
 *RANSAC Regression*:
 
-o Mean Squared Error: 7.1
-o R2 Score: -0.15
-o Mean Absolute Error: 1.12
+o Mean Squared Error: 1.08
+o R2 Score: -0.09
+o Mean Absolute Error: 0.44
 
 As we can see, the performance of the RANSAC Regression model improved slightly, still no major improvements. We can say that PCA was not a good choice.
 
@@ -126,27 +127,27 @@ Another method for selecting the most important features is to use the correlati
 
 *Neural Network Regression*:
 
-o Mean Squared Error: 7.362468
-o R2 Score: -0.19
-o Mean Absolute Error: 1.149001 
+o Mean Squared Error: 0.98
+o R2 Score: 0.0
+o Mean Absolute Error: 0.445 
 
 *XGBoost Regression*:
 
-o Mean Squared Error: 5.72484
-o R2 Score: 0.072464
-o Mean Absolute Error: 1.290114
+o Mean Squared Error: 0.90
+o R2 Score: 0.0822
+o Mean Absolute Error: 0.5
 
 *RANSAC Regression*:
 
-o Mean Squared Error: 7.32 
-o R2 Score: -0.19
-o Mean Absolute Error: 1.16
+o Mean Squared Error: 1.07 
+o R2 Score: -0.08
+o Mean Absolute Error: 0.43
 
-As we can see, the performance of all three models significantly improved after using P-Value for feature selection. The XGBoost Regression model in particular achieved the best score, with an MSE of 5.72484 and an R2 score of 0.072464.
+As we can see, the performance of all three models significantly improved after using P-Value for feature selection. The XGBoost Regression model in particular achieved the best score, with an MSE of 0.90 and an R2 score of 0.0822.
 
 # Final Thoughts and Conclusions
 
-Based on these results, the best model for predicting the number of shares on this dataset is the XGBoost Regression model, with the best performance being achieved after using feature selection through P-Value. It is important to notice that in some cases, RANSAC regression may be a better choice than XGBoost, especially if the data is heavily skewed or has a large amount of noise. This is because RANSAC is able to fit a model to the inlier data while ignoring the outlier data, which can lead to improved model performance. In our case XGBoost was the model that since the first trials had most success applied to data provided. However, it is important to note that the results of this study are specific to the dataset and the models used and may not necessarily generalize to other datasets or models. Further research is needed to confirm the effectiveness of this tool for predicting the number of shares on social media.
+Based on these results, the best model for predicting the number of shares on this dataset is the XGBoost Regression model, with the best performance being achieved after using feature selection through P-Value. In our case XGBoost was the model that since the first trials had most success applied to data provided. However, it is important to note that the results of this study are specific to the dataset and the models used and may not necessarily generalize to other datasets or models. Further research is needed to confirm the effectiveness of this tool for predicting the number of shares on social media.
 
 # Further Recommendations:
 
