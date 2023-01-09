@@ -142,7 +142,7 @@ o Mean Squared Error: 7.32
 o R2 Score: -0.19
 o Mean Absolute Error: 1.16
 
-As we can see, the performance of all three models significantly improved after using P-Value for feature selection. The XGBoost Regression model in particular achieved a considerable score, with an MSE of 0.00024 and an R2 score of 0.999967.
+As we can see, the performance of all three models significantly improved after using P-Value for feature selection. The XGBoost Regression model in particular achieved the best score, with an MSE of 5.72484 and an R2 score of 0.072464.
 
 # Final Thoughts and Conclusions
 
