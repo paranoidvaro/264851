@@ -67,9 +67,9 @@ The scores for each model are as follows:
 
 Neural Network Regression:
 
-o Mean Squared Error: 6.48
-o R2 Score: -0.05
-o Mean Absolute Error: 1.09
+o Mean Squared Error: 7.09
+o R2 Score: --0.15
+o Mean Absolute Error: 1.12 
 
 XGBoost Regression:
 
@@ -79,7 +79,7 @@ o Mean Absolute Error: 1.29
 
 RANSAC Regression:
 
-o Mean Squared Error: 7.4
+o Mean Squared Error: 7.42
 o R2 Score: -0.2
 o Mean Absolute Error: 1.17
 
@@ -102,7 +102,7 @@ After using PCA, we obtained the following results:
 
 *Neural Network Regression*:
 
-o Mean Squared Error: 6.88
+o Mean Squared Error: 6.83 
 o R2 Score: -0.11
 o Mean Absolute Error: 1.1
 
@@ -110,11 +110,11 @@ o Mean Absolute Error: 1.1
 
 o Mean Squared Error: 6.1
 o R2 Score: 0.01
-o Mean Absolute Error: 1.29
+o Mean Absolute Error: 1.37
 
 *RANSAC Regression*:
 
-o Mean Squared Error: 7.12
+o Mean Squared Error: 7.1
 o R2 Score: -0.15
 o Mean Absolute Error: 1.12
 
@@ -126,21 +126,21 @@ Another method for selecting the most important features is to use the correlati
 
 *Neural Network Regression*:
 
-o Mean Squared Error: 1.57
-o R2 Score: 0.74
-o Mean Absolute Error: 0.32
+o Mean Squared Error: 7.362468
+o R2 Score: -0.19
+o Mean Absolute Error: 1.149001 
 
 *XGBoost Regression*:
 
-o Mean Squared Error: 0.00024
-o R2 Score: 0.999967
-o Mean Absolute Error: 0.002864
+o Mean Squared Error: 5.72484
+o R2 Score: 0.072464
+o Mean Absolute Error: 1.290114
 
 *RANSAC Regression*:
 
-o Mean Squared Error: 0.6
-o R2 Score: 0.9
-o Mean Absolute Error: 0.18
+o Mean Squared Error: 7.32 
+o R2 Score: -0.19
+o Mean Absolute Error: 1.16
 
 As we can see, the performance of all three models significantly improved after using P-Value for feature selection. The XGBoost Regression model in particular achieved a considerable score, with an MSE of 0.00024 and an R2 score of 0.999967.
 
