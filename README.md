@@ -53,15 +53,15 @@ After selecting and fitting the best model for each algorithm, we evaluated the 
 The performance of the models before and after feature selection is summarized in the following table:
 |                     Model                     | Mean Squared Error | R2 Score | Mean Absolute Error |
 |:---------------------------------------------:|--------------------|----------|---------------------|
-| Neural Network Regression (before)            | 6.48               | -0.05    | 1.09                |
-| Neural Network Regression (after PCA)         | 6.88               | -0.11    | 1.1                 |
-| Neural Network Regression (after correlation) | 1.57               | 0.74     | 0.32                |
+| Neural Network Regression (before)            | 7.09               | -0.15    | 1.12                |
+| Neural Network Regression (after PCA)         | 6.83               | -0.11    | 1.1                 |
+| Neural Network Regression (after correlation) | 7.362468           | -0.19    | 1.149001            |
 | XGBoost Regression (before)                   | 5.75               | 0.07     | 1.29                |
 | XGBoost Regression (after PCA)                | 6.1                | 0.01     | 1.37                |
-| XGBoost Regression (after correlation)        | 0.000204           | 0.999967 | 0.002864            |
-| RANSAC Regression (before)                    | 7.4                | -0.2     | 1.17                |
-| RANSAC Regression (after PCA)                 | 7.12               | -0.15    | 1.12                |
-| RANSAC Regression (after correlation)         | 0.6                | 0.9      | 0.18                |
+| XGBoost Regression (after correlation)        | 5.72484            | 0.072464 | 1.290114            |
+| RANSAC Regression (before)                    | 7.42               | -0.2     | 1.17                |
+| RANSAC Regression (after PCA)                 | 7.1                | -0.15    | 1.12                |
+| RANSAC Regression (after correlation)         | 7.32               | -0.19    | 1.16                |
 
 The scores for each model are as follows:
 
@@ -94,25 +94,25 @@ PCA was intended to solve the same issue VIF could: remove multicollinearity, an
 
 P-Value Statistical Significance aimed to drop statistically insignificant variables. This is considered a good practice in a regression task as it can reduce the risk of overfitting by reducing the number of features in the mode. Features with a P-Value greater than 0.05 indicates that the feature is not statistically significant and is not likely to have an effect on the outcome.
 
-- Principal Component Analysis (PCA)
+*Principal Component Analysis (PCA)*
 
 PCA is a dimensionality reduction technique that projects the data onto a lower-dimensional space, retaining the most important features of the data. This can be useful for reducing the number of features in a dataset, as it allows us to select the most important features without having to manually identify and remove the less important ones. To use PCA for feature selection, we first fit the PCA model to the training data and then transform the data using the model. We can then select the number of components to retain based on the explained variance of each component. In this project, we retained the top 2 components that explained the 95% of variance in the dataset.
 
 After using PCA, we obtained the following results: 
 
-- Neural Network Regression:
+*Neural Network Regression*:
 
 o Mean Squared Error: 6.88
 o R2 Score: -0.11
 o Mean Absolute Error: 1.1
 
-- XGBoost Regression:
+*XGBoost Regression*:
 
 o Mean Squared Error: 6.1
 o R2 Score: 0.01
 o Mean Absolute Error: 1.29
 
-- RANSAC Regression:
+*RANSAC Regression*:
 
 o Mean Squared Error: 7.12
 o R2 Score: -0.15
@@ -120,23 +120,23 @@ o Mean Absolute Error: 1.12
 
 As we can see, the performance of the RANSAC Regression model improved slightly, still no major improvements. We can say that PCA was not a good choice.
 
-- P-Value Statistical Significance
+*P-Value Statistical Significance*
 
 Another method for selecting the most important features is to use the correlation between the features and the target variable. Features with a high correlation with the target variable are likely to be more important for predicting the target. To select features using correlation, we first fit a linear regression model to the data and compute the p-values for each feature. Features with a p-value greater than a certain threshold (in this case, 0.05) are considered to be not significant and are removed from the dataset. This is known as feature selection through p-value thresholding. This process can be useful for reducing the risk of overfitting by removing features that are not likely to have a meaningful impact on the outcome. After dropping variables using this method, we obtained the following results:
 
-- Neural Network Regression:
+*Neural Network Regression*:
 
 o Mean Squared Error: 1.57
 o R2 Score: 0.74
 o Mean Absolute Error: 0.32
 
-- XGBoost Regression:
+*XGBoost Regression*:
 
 o Mean Squared Error: 0.00024
 o R2 Score: 0.999967
 o Mean Absolute Error: 0.002864
 
-- RANSAC Regression:
+*RANSAC Regression*:
 
 o Mean Squared Error: 0.6
 o R2 Score: 0.9
